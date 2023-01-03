@@ -1,0 +1,7 @@
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:38:9:BSP_SPI1_DeInit	8	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:57:9:BSP_SPI1_Send	8	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:68:10:BSP_SPI1_Recv	8	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:79:9:BSP_SPI1_SendRecv	16	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:90:9:BSP_GetTick	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:96:26:MX_SPI1_Init	8	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/nucleo_wb55_bus.c.c:11:9:BSP_SPI1_Init	40	static

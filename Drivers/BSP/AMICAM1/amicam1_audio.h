@@ -49,9 +49,11 @@ extern "C" {
  */
 /* amicam1 */ 
 extern SAI_HandleTypeDef hAudioInSai;
+#ifndef STM32WB55xx
 extern ADC_HandleTypeDef hAudioInADC;
 extern DFSDM_Filter_HandleTypeDef   hAudioInDfsdmFilterHandle; 
 extern DMA_HandleTypeDef ADC_DmaHandle;
+#endif
 
 #ifndef AUDIO_SHARED_TYPES
 #define AUDIO_SHARED_TYPES
@@ -250,7 +252,8 @@ uint32_t AudioMode;
 /*------------------------------------------------------------------------------
                         AMICAM1 defines parameters
 ------------------------------------------------------------------------------*/ 
-/* SAI peripheral configuration defines */  
+/* SAI peripheral configuration defines */
+#ifndef STM32WB55xx
 #define AMICAM1_SAI_INSTANCE                  SAI2_Block_B
 #define AMICAM1_SAI_CLK_ENABLE()             __HAL_RCC_SAI2_CLK_ENABLE()
 #define AMICAM1_SAI_CLK_DISABLE()             __SAI2_CLK_DISABLE()  
@@ -326,7 +329,43 @@ uint32_t AudioMode;
 #define AMICAM1_DFSDM_DMAx_PERIPH_DATA_SIZE    DMA_PDATAALIGN_WORD
 #define AMICAM1_DFSDM_DMAx_MEM_DATA_SIZE       DMA_MDATAALIGN_WORD
 #define AMICAM1_DFSDM_IRQHandler               DMA1_Channel4_IRQHandler
+#else
+#define AMICAM1_SAI_INSTANCE                  SAI1_Block_A
+#define AMICAM1_SAI_CLK_ENABLE()             __HAL_RCC_SAI1_CLK_ENABLE()
+#define AMICAM1_SAI_CLK_DISABLE()             __SAI1_CLK_DISABLE()
 
+#define AMICAM1_SD_AF                     GPIO_AF13_SAI1
+#define AMICAM1_SCK_AF                    GPIO_AF13_SAI1
+#define AMICAM1_MCLK_AF                   GPIO_AF13_SAI1
+#define AMICAM1_FS_AF                     GPIO_AF13_SAI1
+
+#define AMICAM1_SD_CLK_ENABLE()          __HAL_RCC_GPIOA_CLK_ENABLE()
+#define AMICAM1_SCK_CLK_ENABLE()         __HAL_RCC_GPIOA_CLK_ENABLE()
+#define AMICAM1_MCLK_CLK_ENABLE()        __HAL_RCC_GPIOA_CLK_ENABLE()
+#define AMICAM1_FS_CLK_ENABLE()          __HAL_RCC_GPIOA_CLK_ENABLE()
+
+#define AMICAM1_SD_PIN                   GPIO_PIN_10
+#define AMICAM1_SCK_PIN                  GPIO_PIN_8
+#define AMICAM1_MCLK_PIN                 GPIO_PIN_3
+#define AMICAM1_FS_PIN                   GPIO_PIN_9
+
+#define AMICAM1_SD_GPIO_PORT             GPIOA
+#define AMICAM1_SCK_GPIO_PORT            GPIOA
+#define AMICAM1_MCLK_GPIO_PORT           GPIOA
+#define AMICAM1_FS_GPIO_PORT             GPIOA
+/* SAI DMA Stream tx definitions */
+#define AMICAM1_DMAx_CLK_ENABLE()        __HAL_RCC_DMA1_CLK_ENABLE()
+#define AMICAM1_DMAx_INSTANCE            DMA1_Channel1 // ?????????????????
+#ifdef STM32L4R5xx
+#define AMICAM1_DMAx_REQUEST             DMA_REQUEST_SAI2_B
+#else
+#define AMICAM1_DMAx_REQUEST             DMA_REQUEST_SAI1_A
+#endif
+#define AMICAM1_DMAx_IRQ                 DMA1_Channel1_IRQn
+#define AMICAM1_DMAx_PERIPH_DATA_SIZE    DMA_PDATAALIGN_HALFWORD
+#define AMICAM1_DMAx_MEM_DATA_SIZE       DMA_MDATAALIGN_HALFWORD
+#define AMICAM1_IRQHandler               DMA1_Channel1_IRQHandler
+#endif
 
 /*************************************************************************/
 

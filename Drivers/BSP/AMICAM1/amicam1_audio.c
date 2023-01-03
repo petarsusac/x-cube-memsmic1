@@ -20,7 +20,7 @@
 */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l4xx_hal.h"
+#include "stm32wbxx_hal.h"
 #include "amicam1_audio.h"
 #include "audio.h"
 
@@ -47,9 +47,14 @@
 /** @defgroup AMICAM1_AUDIO_IN_Private_Defines 
 * @{
 */ 
+
+// Dodani ifndef STM32WB55xx
+#ifndef STM32WB55xx
 #define ADC_CLOCK ((uint32_t)(3072000))
 
 static int32_t DFSDM_internal_buff[((MAX_FS/1000) * 2 * N_MS_PER_INTERRUPT)];
+#endif
+
 static uint16_t SAI_internal_buff[((MAX_FS/1000) * 2 * MAX_CH_NUMBER *N_MS_PER_INTERRUPT)];
 
 /**
@@ -73,11 +78,13 @@ static AUDIO_Drv_t                     *AudioDrv = NULL;
 static void                            *CompObj = NULL;
 
 SAI_HandleTypeDef hAudioInSai;
+#ifndef STM32WB55xx
 ADC_HandleTypeDef hAudioInADC;
 
 DFSDM_Filter_HandleTypeDef   hAudioInDfsdmFilterHandle;
 static DFSDM_Channel_HandleTypeDef  hAudioInDfsdmChannelHandle;
 DMA_HandleTypeDef ADC_DmaHandle;
+#endif
 
 
 /**
@@ -89,16 +96,17 @@ DMA_HandleTypeDef ADC_DmaHandle;
 */ 
 HAL_StatusTypeDef MX_SAI_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t SampleRate);
 HAL_StatusTypeDef MX_SAI_Init(SAI_HandleTypeDef* hsai, MX_SAI_Config *MXConfig);
-
+#ifndef STM32WB55xx
 HAL_StatusTypeDef MX_ADC_ClockConfig(ADC_HandleTypeDef* hadc, uint32_t SampleRate);
 HAL_StatusTypeDef MX_ADC_Init(ADC_HandleTypeDef* hadc, uint32_t ClockPrescaler);
 HAL_StatusTypeDef MX_DFSDM_Init(DFSDM_Filter_HandleTypeDef* hfilter, DFSDM_Channel_HandleTypeDef * hchannel, MX_DFSDM_Config *MXConfig);
-
+#endif
 static void SAI_MspInit(SAI_HandleTypeDef *hsai);
 static void SAI_MspDeInit(SAI_HandleTypeDef *hsai);
-
+#ifndef STM32WB55xx
 static void ADC_MspInit(ADC_HandleTypeDef *hadc);
 static void DFSDM_FilterMspInit(DFSDM_Filter_HandleTypeDef *hfilter);
+#endif
 
 static int32_t AD1974_Probe(void);
 static int32_t BSP_AD1974_Init(void);
@@ -138,7 +146,7 @@ __weak int32_t AMICAM1_AUDIO_IN_Init(uint32_t Instance, BSP_AUDIO_Init_t* AudioI
     {
       return BSP_ERROR_WRONG_PARAM;
     }
-    /* PLL clock SETUP */ 
+    /* PLL clock SETUP */
     if(MX_SAI_ClockConfig(&hAudioInSai, (uint32_t)NULL) != HAL_OK)
     {
       return BSP_ERROR_CLOCK_FAILURE;
@@ -199,7 +207,8 @@ __weak int32_t AMICAM1_AUDIO_IN_Init(uint32_t Instance, BSP_AUDIO_Init_t* AudioI
       return BSP_ERROR_COMPONENT_FAILURE;
     }
     
-  }      
+  }
+#ifndef STM32WB55xx
   else if((amicam1_ctx[Instance].Device & (AUDIO_IN_ANALOG_MIC5)) != 0U)
   {
     amicam1_ctx[Instance].DecimationFactor = ADC_CLOCK / amicam1_ctx[Instance].SampleRate;
@@ -276,6 +285,7 @@ __weak int32_t AMICAM1_AUDIO_IN_Init(uint32_t Instance, BSP_AUDIO_Init_t* AudioI
       return BSP_ERROR_PERIPH_FAILURE;
     }
   }
+#endif
   else
   {
     return BSP_ERROR_WRONG_PARAM;
@@ -389,9 +399,9 @@ int32_t AMICAM1_AUDIO_IN_Record(uint32_t Instance, uint8_t* pBuf, uint32_t NbrOf
       ret =  BSP_ERROR_PERIPH_FAILURE;
     }
 #endif
-    
+#ifndef STM32WB55xx
     (void)HAL_DFSDM_FilterRegularStart_DMA(&hAudioInDfsdmFilterHandle, DFSDM_internal_buff, (amicam1_ctx[AUDIO_IN_INSTANCE_ADC_INT].Size));  
-    
+#endif
 #ifdef STM32L476xx 
     uint32_t adc_size =  amicam1_ctx[AUDIO_IN_INSTANCE_ADC_INT].Size * amicam1_ctx[AUDIO_IN_INSTANCE_ADC_INT].DecimationFactor;   
     
@@ -953,7 +963,7 @@ void HAL_SAI_ErrorCallback(SAI_HandleTypeDef *hsai)
   It is called into this driver when the current buffer is filled
   to prepare the next buffer pointer and its size. */ 
 }
-
+#ifndef STM32WB55xx
 void HAL_DFSDM_FilterRegConvCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filter)
 {  
   /* Prevent unused argument(s) compilation warning */
@@ -998,7 +1008,7 @@ void HAL_DFSDM_FilterRegConvHalfCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_
   
   AMICAM1_AUDIO_IN_TransferComplete_CallBack(0);
 }
-
+#endif
 
 /**
 * @brief  User callback when record buffer is filled.
@@ -1060,6 +1070,7 @@ __weak HAL_StatusTypeDef MX_SAI_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t Sa
   RCC_PeriphCLKInitTypeDef RCC_ExCLKInitStruct;  
   HAL_RCCEx_GetPeriphCLKConfig(&RCC_ExCLKInitStruct);
   
+#ifndef STM32WB55xx
   /* SAI clock config */
   RCC_ExCLKInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI2;
   RCC_ExCLKInitStruct.Sai2ClockSelection = RCC_SAI2CLKSOURCE_PLLSAI2;
@@ -1076,6 +1087,24 @@ __weak HAL_StatusTypeDef MX_SAI_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t Sa
   RCC_ExCLKInitStruct.PLLSAI2.PLLSAI2P = RCC_PLLP_DIV7;
   RCC_ExCLKInitStruct.PLLSAI2.PLLSAI2R = RCC_PLLR_DIV4;
   RCC_ExCLKInitStruct.PLLSAI2.PLLSAI2ClockOut = RCC_PLLSAI2_SAI2CLK;
+#else
+  /* SAI clock config */
+    RCC_ExCLKInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI1;
+    RCC_ExCLKInitStruct.Sai1ClockSelection = RCC_SAI1CLKSOURCE_PLLSAI1;
+
+  #ifdef STM32L4R5xx
+    RCC_ExCLKInitStruct.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSE;
+    RCC_ExCLKInitStruct.PLLSAI1.PLLSAI1M = 2;
+  #else
+    // RCC_ExCLKInitStruct.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
+    // RCC_ExCLKInitStruct.PLLSAI1.PLLSAI1M = 4;
+  #endif
+
+    RCC_ExCLKInitStruct.PLLSAI1.PLLN = 86;
+    RCC_ExCLKInitStruct.PLLSAI1.PLLP = RCC_PLLP_DIV7;
+    RCC_ExCLKInitStruct.PLLSAI1.PLLR = RCC_PLLR_DIV4;
+    RCC_ExCLKInitStruct.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_SAI1CLK;
+#endif
   
   if(HAL_RCCEx_PeriphCLKConfig(&RCC_ExCLKInitStruct) != HAL_OK)
   {
@@ -1085,6 +1114,7 @@ __weak HAL_StatusTypeDef MX_SAI_ClockConfig(SAI_HandleTypeDef *hsai, uint32_t Sa
   return ret;
 }
 
+#ifndef STM32WB55xx
 /**
 * @brief  ADC clock Config.
 * @param  hadc ADC handle
@@ -1132,8 +1162,9 @@ __weak HAL_StatusTypeDef MX_ADC_ClockConfig(ADC_HandleTypeDef* hadc, uint32_t Sa
   return ret;
   
 }
+#endif
 
-
+#ifndef STM32WB55xx
 /**
 * @brief  Initializes the DFSDM.
 * @param  MXConfig DFSDM configuration structure
@@ -1360,7 +1391,7 @@ static void DFSDM_FilterMspInit(DFSDM_Filter_HandleTypeDef *hfilter)
     HAL_NVIC_EnableIRQ(AMICAM1_DFSDM_DMAx_IRQ);
   }
 }
-
+#endif
 
 /**
 * @brief  Initializes the Audio instance (SAI).
@@ -1421,6 +1452,9 @@ static void SAI_MspInit(SAI_HandleTypeDef *hsai)
 #ifdef STM32L4R5xx
     __HAL_RCC_DMAMUX1_CLK_ENABLE();
 #endif
+#ifdef STM32WB55xx
+    __HAL_RCC_DMAMUX1_CLK_ENABLE();
+#endif
     /* Enable SAI clock */
     AMICAM1_SAI_CLK_ENABLE();
     
@@ -1449,10 +1483,10 @@ static void SAI_MspInit(SAI_HandleTypeDef *hsai)
     GPIO_InitStruct.Pin         = AMICAM1_FS_PIN ;
     GPIO_InitStruct.Alternate   = AMICAM1_FS_AF;
     HAL_GPIO_Init(AMICAM1_FS_GPIO_PORT, &GPIO_InitStruct);    
-    
+
     /* Enable the DMA clock */
-    AMICAM1_DMAx_CLK_ENABLE(); 
-    
+    AMICAM1_DMAx_CLK_ENABLE();
+
     hdma_SaiRx_1.Instance                 = AMICAM1_DMAx_INSTANCE;  
     hdma_SaiRx_1.Init.Request             = AMICAM1_DMAx_REQUEST;   
     hdma_SaiRx_1.Init.Direction           = DMA_PERIPH_TO_MEMORY;

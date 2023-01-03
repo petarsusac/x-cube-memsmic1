@@ -1,0 +1,8 @@
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:57:6:NMI_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:66:6:HardFault_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:79:6:SVC_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:88:6:DebugMon_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:97:6:PendSV_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:106:6:SysTick_Handler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:116:6:USB_LP_IRQHandler	0	static
+/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/stm32xx_it.c:127:6:DMA1_Channel1_IRQHandler	0	static
