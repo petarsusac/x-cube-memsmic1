@@ -52,13 +52,13 @@ In base of the microphones you want to use, select the right AUDIO_IN_CHANNELS
 */  
 
 #define AUDIO_IN_CHANNELS                       2
-#define AUDIO_IN_SAMPLING_FREQUENCY             192000
+#define AUDIO_IN_SAMPLING_FREQUENCY             48000
 #define AUDIO_IN_INSTANCE          AUDIO_IN_INSTANCE_ADC_EXT //AUDIO_IN_INSTANCE_ADC_INT
 #define AUDIO_IN_MICS              (AUDIO_IN_ANALOG_MIC1 | AUDIO_IN_ANALOG_MIC2) //(AUDIO_IN_ANALOG_MIC1 | AUDIO_IN_ANALOG_MIC2| AUDIO_IN_ANALOG_MIC3 | AUDIO_IN_ANALOG_MIC4) //(AUDIO_IN_ANALOG_MIC5)
 
 #define AUDIO_IN_NOT_USED               0
 #define AUDIO_IN_BUFFER_SIZE            DEFAULT_AUDIO_IN_BUFFER_SIZE  
-#define AUDIO_VOLUME_INPUT              64U
+#define AUDIO_VOLUME_INPUT              96U
 #define AMICAM1_AUDIO_IN_IT_PRIORITY    6U    
 
   

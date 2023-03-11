@@ -103,7 +103,7 @@ void AudioProcessHalf(void)
 
 void AudioProcessFull(void)
 {
-	Send_Audio_to_USB((int16_t *)(PCM_Buffer + HALF_BUFSIZE), HALF_BUFSIZE);
+	Send_Audio_to_USB((int16_t *)PCM_Buffer, HALF_BUFSIZE);
 }
 
 /**

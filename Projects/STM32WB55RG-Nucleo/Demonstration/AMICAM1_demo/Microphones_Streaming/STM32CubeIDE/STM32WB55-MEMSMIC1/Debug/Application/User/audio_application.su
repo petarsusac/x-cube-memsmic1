@@ -1,7 +1,0 @@
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:99:6:AudioProcessHalf	0	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:74:6:AMICAM1_AUDIO_IN_HalfTransfer_CallBack	0	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:104:6:AudioProcessFull	0	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:85:6:AMICAM1_AUDIO_IN_TransferComplete_CallBack	0	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:117:6:Init_Acquisition_Peripherals	8	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:139:6:Start_Acquisition	8	static
-/home/petar/seminar/x-cube-memsmic1/Projects/STM32WB55RG-Nucleo/Demonstration/AMICAM1_demo/Microphones_Streaming/Src/audio_application.c:148:6:Error_Handler	0	static
