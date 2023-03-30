@@ -9,6 +9,7 @@ S_SRCS :=
 C_SRCS := 
 S_UPPER_SRCS := 
 O_SRCS := 
+CYCLO_FILES := 
 SIZE_OUTPUT := 
 OBJDUMP_LIST := 
 SU_FILES := 
@@ -23,6 +24,7 @@ C_DEPS :=
 SUBDIRS := \
 Application/STM4STM32 \
 Application/User \
+Application/X-CUBE-AI \
 Drivers/BSP/STM32F7xx_Nucleo \
 Drivers/BSP/X-NUCLEO-CCA02M2 \
 Drivers/CMSIS \

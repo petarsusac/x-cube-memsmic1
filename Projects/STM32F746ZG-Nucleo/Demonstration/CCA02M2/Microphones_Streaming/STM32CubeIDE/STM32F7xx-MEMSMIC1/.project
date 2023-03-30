@@ -57,6 +57,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>Application/X-CUBE-AI</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Doc/readme.txt</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/readme.txt</locationURI>
@@ -127,6 +132,16 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Src/usbd_desc.c</locationURI>
 		</link>
 		<link>
+			<name>Application/X-CUBE-AI/prolongation_model.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Src/prolongation_model.c</locationURI>
+		</link>
+		<link>
+			<name>Application/X-CUBE-AI/prolongation_model_data.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Src/prolongation_model_data.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/BSP/STM32F7xx_Nucleo</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -155,6 +170,16 @@
 			<name>Drivers/STM32F7xx_HAL_Driver/stm32f7xx_hal_cortex.c</name>
 			<type>1</type>
 			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32F7xx_HAL_Driver/stm32f7xx_hal_crc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32F7xx_HAL_Driver/stm32f7xx_hal_crc_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc_ex.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/STM32F7xx_HAL_Driver/stm32f7xx_hal_dma.c</name>
