@@ -68,7 +68,7 @@ main-build: STM32F7xx-MEMSMIC1.elf secondary-outputs
 
 # Tool invocations
 STM32F7xx-MEMSMIC1.elf STM32F7xx-MEMSMIC1.map: $(OBJS) $(USER_OBJS) /home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/STM32CubeIDE/STM32F7xx-MEMSMIC1/STM32F746ZGTx_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32F7xx-MEMSMIC1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/STM32CubeIDE/STM32F7xx-MEMSMIC1/STM32F746ZGTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F7xx-MEMSMIC1.map" -Wl,--gc-sections -static -L../../../../../../../../Middlewares/ST/STM32_Audio/Addons/PDM/Lib -L../../../../../../../../Drivers/CMSIS/DSP/Lib/GCC -L../../../../../../../../Middlewares/ST/AI/Lib --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "STM32F7xx-MEMSMIC1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/STM32CubeIDE/STM32F7xx-MEMSMIC1/STM32F746ZGTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F7xx-MEMSMIC1.map" -Wl,--gc-sections -static -L../../../../../../../../Middlewares/ST/STM32_Audio/Addons/PDM/Lib -L../../../../../../../../Drivers/CMSIS/DSP/Lib/GCC -L../../../../../../../../Middlewares/ST/AI/Lib --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

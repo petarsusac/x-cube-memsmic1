@@ -5,5 +5,5 @@
 
 USER_OBJS :=
 
-LIBS := -l:libPDMFilter_CM7_GCC_wc32_softfp.a -l:libarm_cortexM7l_math.a -l:NetworkRuntime500_CM7_GCC.a
+LIBS := -l:NetworkRuntime500_CM7_GCC.a -l:libarm_cortexM7lfsp_math.a -l:libPDMFilter_CM7_GCC_wc32.a
 
