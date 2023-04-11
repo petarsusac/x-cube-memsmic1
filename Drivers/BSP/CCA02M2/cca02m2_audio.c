@@ -275,6 +275,10 @@ __weak int32_t CCA02M2_AUDIO_IN_Init(uint32_t Instance, CCA02M2_AUDIO_Init_t* Au
         PDM_Clock_Freq = 3072;
         break;
         
+      case AUDIO_FREQUENCY_44K:
+    	PDM_Clock_Freq = 1411;
+    	break;
+
       default:        
         PDM_Clock_Freq = 0;
         break;
@@ -285,8 +289,15 @@ __weak int32_t CCA02M2_AUDIO_IN_Init(uint32_t Instance, CCA02M2_AUDIO_Init_t* Au
         return BSP_ERROR_WRONG_PARAM;
       }
       
-      AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate;
-      /* Double buffer for 1 microphone */
+      if (PDM_Clock_Freq == 1411)
+      {
+    	AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate + 1;
+      }
+      else
+      {
+    	AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate;
+      }
+
       AudioInCtx[Instance].Size = (PDM_Clock_Freq/8U) * 2U * N_MS_PER_INTERRUPT;
       
 #ifdef USE_STM32WBXX_NUCLEO 
