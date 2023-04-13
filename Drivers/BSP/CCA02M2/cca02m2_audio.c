@@ -276,7 +276,7 @@ __weak int32_t CCA02M2_AUDIO_IN_Init(uint32_t Instance, CCA02M2_AUDIO_Init_t* Au
         break;
         
       case AUDIO_FREQUENCY_44K:
-    	PDM_Clock_Freq = 1411;
+    	PDM_Clock_Freq = 2816;
     	break;
 
       default:        
@@ -289,14 +289,7 @@ __weak int32_t CCA02M2_AUDIO_IN_Init(uint32_t Instance, CCA02M2_AUDIO_Init_t* Au
         return BSP_ERROR_WRONG_PARAM;
       }
       
-      if (PDM_Clock_Freq == 1411)
-      {
-    	AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate + 1;
-      }
-      else
-      {
-    	AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate;
-      }
+	  AudioInCtx[Instance].DecimationFactor = (PDM_Clock_Freq * 1000U)/AudioInit->SampleRate;
 
       AudioInCtx[Instance].Size = (PDM_Clock_Freq/8U) * 2U * N_MS_PER_INTERRUPT;
       

@@ -194,7 +194,7 @@ typedef struct
 #define AUDIO_FREQUENCY_48K       (uint32_t)48000U
 #endif
 #ifndef AUDIO_FREQUENCY_44K  
-#define AUDIO_FREQUENCY_44K       (uint32_t)44100U
+#define AUDIO_FREQUENCY_44K       (uint32_t)44000U
 #endif
 #ifndef AUDIO_FREQUENCY_32K
 #define AUDIO_FREQUENCY_32K       (uint32_t)32000U
@@ -479,11 +479,11 @@ typedef struct
 
 /*Number of millisecond of audio at each DMA interrupt*/
 #ifndef N_MS_PER_INTERRUPT
-#define N_MS_PER_INTERRUPT               (1U)
+#define N_MS_PER_INTERRUPT               (10U)
 #endif
 
 /* Default Audio IN internal buffer size */   
-#define DEFAULT_AUDIO_IN_BUFFER_SIZE        (uint32_t)((AUDIO_IN_SAMPLING_FREQUENCY/1000)*2)*N_MS_PER_INTERRUPT    
+#define DEFAULT_AUDIO_IN_BUFFER_SIZE        (uint32_t)((AUDIO_IN_SAMPLING_FREQUENCY*N_MS_PER_INTERRUPT/1000)*2)
 
 /*BSP internal buffer size in half words (16 bits)*/  
 #define PDM_INTERNAL_BUFFER_SIZE_I2S          ((MAX_MIC_FREQ / 8) * MAX_AUDIO_IN_CHANNEL_NBR_PER_IF * N_MS_PER_INTERRUPT)
