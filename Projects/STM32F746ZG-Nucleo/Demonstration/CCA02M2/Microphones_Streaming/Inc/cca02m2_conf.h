@@ -43,7 +43,7 @@ modification in the application layer developed with the older versions of the d
 #define N_MS (N_MS_PER_INTERRUPT)
 
 #define AUDIO_IN_CHANNELS 2
-#define AUDIO_IN_SAMPLING_FREQUENCY 44000
+#define AUDIO_IN_SAMPLING_FREQUENCY 22050
 
 #define AUDIO_IN_BUFFER_SIZE            DEFAULT_AUDIO_IN_BUFFER_SIZE
 #define AUDIO_VOLUME_INPUT              64U

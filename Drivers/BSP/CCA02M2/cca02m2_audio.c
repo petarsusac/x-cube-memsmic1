@@ -279,6 +279,10 @@ __weak int32_t CCA02M2_AUDIO_IN_Init(uint32_t Instance, CCA02M2_AUDIO_Init_t* Au
     	PDM_Clock_Freq = 2816;
     	break;
 
+      case AUDIO_FREQUENCY_22K:
+    	PDM_Clock_Freq = 1764;
+    	break;
+
       default:        
         PDM_Clock_Freq = 0;
         break;
@@ -1108,7 +1112,7 @@ __weak int32_t CCA02M2_AUDIO_IN_PDMToPCM_Init(uint32_t Instance, uint32_t AudioF
       PDM_FilterHandler[index].in_ptr_channels  = (uint16_t)ChnlNbrIn;
       
       /* PDM lib config phase */
-      PDM_FilterConfig[index].output_samples_number = (uint16_t) ((AudioFreq/1000U) * N_MS_PER_INTERRUPT);
+      PDM_FilterConfig[index].output_samples_number = (uint16_t) ((AudioFreq*N_MS_PER_INTERRUPT)/1000U);
       PDM_FilterConfig[index].mic_gain = 24;
       
       switch (AudioInCtx[0].DecimationFactor)
