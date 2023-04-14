@@ -147,6 +147,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Src/usbd_desc.c</locationURI>
 		</link>
 		<link>
+			<name>Application/X-CUBE-AI/ai.c</name>
+			<type>1</type>
+			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Src/ai.c</location>
+		</link>
+		<link>
 			<name>Application/X-CUBE-AI/prolongation_model.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Src/prolongation_model.c</locationURI>

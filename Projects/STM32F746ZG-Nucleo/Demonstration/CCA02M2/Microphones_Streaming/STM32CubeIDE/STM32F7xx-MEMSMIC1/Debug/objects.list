@@ -9,6 +9,7 @@
 "./Application/User/usbd_audio_if.o"
 "./Application/User/usbd_conf_f7.o"
 "./Application/User/usbd_desc.o"
+"./Application/X-CUBE-AI/ai.o"
 "./Application/X-CUBE-AI/prolongation_model.o"
 "./Application/X-CUBE-AI/prolongation_model_data.o"
 "./Drivers/BSP/STM32F7xx_Nucleo/stm32f7xx_nucleo_144.o"
