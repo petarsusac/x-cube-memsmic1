@@ -22,6 +22,7 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Application/MFCC \
 Application/STM4STM32 \
 Application/User \
 Application/X-CUBE-AI \
@@ -29,6 +30,7 @@ Drivers/BSP/STM32F7xx_Nucleo \
 Drivers/BSP/X-NUCLEO-CCA02M2 \
 Drivers/CMSIS \
 Drivers/STM32F7xx_HAL_Driver \
+Middlewares/ST/STM32_AI_AudioPreprocessing_Library \
 Middlewares/ST/STM32_USB_Device_Library/Class \
 Middlewares/ST/STM32_USB_Device_Library/Core \
 

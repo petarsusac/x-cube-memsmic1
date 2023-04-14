@@ -28,6 +28,8 @@
 #include "ai_platform.h"
 #include "prolongation_model.h"
 #include "prolongation_model_data.h"
+
+#include "arm_math.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -51,6 +53,10 @@
   */
 USBD_HandleTypeDef hUSBDDevice;
 extern USBD_AUDIO_ItfTypeDef  USBD_AUDIO_fops;
+
+extern int16_t test_signal[22000];
+float32_t mfcc_out[13 * 44];
+int16_t test_signal_padded[22000 + 2048 + 50] = {0};
 /**
   * @}
   */
@@ -62,6 +68,9 @@ extern USBD_AUDIO_ItfTypeDef  USBD_AUDIO_fops;
 /**
   * @}
   */
+
+extern void Preprocessing_Init();
+extern void AudioPreprocessing_Run(int16_t *pInSignal, float32_t *pOutMfcc, uint32_t signal_len);
 
 /**
   * @brief  Main program
@@ -263,6 +272,10 @@ int main(void)
 
   // Read output (predicted y) of neural network
   y_val = ((float *)out_data)[0];
+
+  Preprocessing_Init();
+  memcpy(test_signal_padded, test_signal, sizeof(int16_t) * 22000);
+  AudioPreprocessing_Run(test_signal, mfcc_out, 22000 + 2048 + 50);
 
   while (1)
   {

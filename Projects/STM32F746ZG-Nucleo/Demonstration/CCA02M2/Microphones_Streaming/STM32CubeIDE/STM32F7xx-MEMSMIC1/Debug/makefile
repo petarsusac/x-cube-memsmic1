@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/subdir.mk
+-include Middlewares/ST/STM32_AI_AudioPreprocessing_Library/subdir.mk
 -include Drivers/STM32F7xx_HAL_Driver/subdir.mk
 -include Drivers/CMSIS/subdir.mk
 -include Drivers/BSP/X-NUCLEO-CCA02M2/subdir.mk
@@ -18,6 +19,7 @@ RM := rm -rf
 -include Application/X-CUBE-AI/subdir.mk
 -include Application/User/subdir.mk
 -include Application/STM4STM32/subdir.mk
+-include Application/MFCC/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
