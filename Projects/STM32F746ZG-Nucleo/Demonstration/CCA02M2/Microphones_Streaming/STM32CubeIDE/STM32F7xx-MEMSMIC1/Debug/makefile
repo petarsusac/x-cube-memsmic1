@@ -19,7 +19,7 @@ RM := rm -rf
 -include Application/X-CUBE-AI/subdir.mk
 -include Application/User/subdir.mk
 -include Application/STM4STM32/subdir.mk
--include Application/MFCC/subdir.mk
+-include Application/Preprocessing/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

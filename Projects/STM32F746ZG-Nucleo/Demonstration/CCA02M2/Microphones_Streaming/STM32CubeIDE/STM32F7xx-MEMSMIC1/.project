@@ -47,7 +47,7 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Application/MFCC</name>
+			<name>Application/Preprocessing</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -92,14 +92,19 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Application/MFCC/mfcc.c</name>
+			<name>Application/Preprocessing/Inc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Application/Preprocessing/mfcc.c</name>
 			<type>1</type>
 			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Src/mfcc.c</location>
 		</link>
 		<link>
-			<name>Application/MFCC/mfcc_data.c</name>
+			<name>Application/Preprocessing/preprocessing.c</name>
 			<type>1</type>
-			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Src/mfcc_data.c</location>
+			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Src/preprocessing.c</location>
 		</link>
 		<link>
 			<name>Application/STM4STM32/startup_stm32f746xx.s</name>
@@ -290,6 +295,16 @@
 			<name>Middlewares/ST/STM32_USB_Device_Library</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Application/Preprocessing/Inc/mfcc.h</name>
+			<type>1</type>
+			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Inc/mfcc.h</location>
+		</link>
+		<link>
+			<name>Application/Preprocessing/Inc/preprocessing.h</name>
+			<type>1</type>
+			<location>/home/petar/seminar/x-cube-memsmic1/Projects/STM32F746ZG-Nucleo/Demonstration/CCA02M2/Microphones_Streaming/Inc/preprocessing.h</location>
 		</link>
 		<link>
 			<name>Drivers/BSP/STM32F7xx_Nucleo/stm32f7xx_nucleo_144.c</name>

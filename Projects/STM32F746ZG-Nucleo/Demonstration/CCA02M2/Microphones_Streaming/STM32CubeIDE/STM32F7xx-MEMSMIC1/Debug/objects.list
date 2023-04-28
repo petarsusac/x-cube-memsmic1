@@ -1,5 +1,5 @@
-"./Application/MFCC/mfcc.o"
-"./Application/MFCC/mfcc_data.o"
+"./Application/Preprocessing/mfcc.o"
+"./Application/Preprocessing/preprocessing.o"
 "./Application/STM4STM32/startup_stm32f746xx.o"
 "./Application/User/audio_application.o"
 "./Application/User/cube_hal_f7.o"

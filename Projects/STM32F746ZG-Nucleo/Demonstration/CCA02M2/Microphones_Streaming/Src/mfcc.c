@@ -16,8 +16,8 @@
  *
  ******************************************************************************
  */
+#include "mfcc.h"
 #include "feature_extraction.h"
-
 /*
  * y = librosa.load('bus.wav', sr=None, duration=1)[0] # Keep native 16kHz sampling rate
  * librosa.feature.mfcc(y, sr=16000, n_mfcc=20, dct_type=2, norm='ortho', lifter=0, center=False)
@@ -49,7 +49,7 @@ float32_t pMelFilterCoefs[NUM_MEL_COEFS];
 uint32_t pMelFilterStartIndices[NUM_MELS];
 uint32_t pMelFilterStopIndices[NUM_MELS];
 
-void Preprocessing_Init(void)
+void mfcc_init(void)
 {
   /* Init window function */
   if (Window_Init(pWindowFuncBuffer, FRAME_LEN, WINDOW_HANN) != 0)
@@ -111,11 +111,11 @@ void Preprocessing_Init(void)
   /* Init MFCC */
   S_Mfcc.LogMelConf   = &S_LogMelSpectr;
   S_Mfcc.pDCT         = &S_DCT;
-  S_Mfcc.NumMfccCoefs = 20;
+  S_Mfcc.NumMfccCoefs = NUM_MFCC;
   S_Mfcc.pScratch     = pMfccScratchBuffer;
 }
 
-void AudioPreprocessing_Run(int16_t *pInSignal, float32_t *pOutMfcc, uint32_t signal_len)
+void mfcc_run(int16_t *pInSignal, float32_t *pOutMfcc, uint32_t signal_len)
 {
   const uint32_t num_frames = 1 + (signal_len - FRAME_LEN) / HOP_LEN;
 

@@ -22,7 +22,7 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Application/MFCC \
+Application/Preprocessing \
 Application/STM4STM32 \
 Application/User \
 Application/X-CUBE-AI \
